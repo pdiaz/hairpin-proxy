@@ -2,3 +2,8 @@
 set -e
 (cd ./hairpin-proxy-haproxy && ./build_and_push)
 (cd ./hairpin-proxy-controller && ./build_and_push)
+
+docker tag pd1az/hairpin-proxy-controller pd1az/hairpin-proxy-controller:0.2.1
+docker push pd1az/hairpin-proxy-controller:0.2.1
+docker tag pd1az/hairpin-proxy-haproxy pd1az/hairpin-proxy-haproxy:0.2.1
+docker push pd1az/hairpin-proxy-haproxy:0.2.1

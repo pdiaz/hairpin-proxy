@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
-docker build -t compumike/hairpin-proxy-controller .
-docker push compumike/hairpin-proxy-controller
+docker build --platform linux/amd64 -t pd1az/hairpin-proxy-controller .
+docker push pd1az/hairpin-proxy-controller
