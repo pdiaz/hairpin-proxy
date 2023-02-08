@@ -160,3 +160,16 @@ spec:
             limits:
               memory: "100Mi"
               cpu: "50m"
+
+---
+
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: hairpin-proxy-haproxy
+  namespace: hairpin-proxy
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: hairpin-proxy-haproxy

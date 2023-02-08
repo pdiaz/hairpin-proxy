@@ -9,12 +9,12 @@ require "socket"
 class HairpinProxyController
   COMMENT_LINE_SUFFIX = "# Added by hairpin-proxy"
   DNS_REWRITE_DESTINATION = "hairpin-proxy.hairpin-proxy.svc.cluster.local"
-  POLL_INTERVAL = ENV.fetch("POLL_INTERVAL", "15").to_i.clamp(1..)
+  POLL_INTERVAL = ENV.fetch("POLL_INTERVAL", "30").to_i.clamp(1..)
 
   # Kubernetes <= 1.18 puts Ingress in "extensions/v1beta1"
   # Kubernetes >= 1.19 puts Ingress in "networking.k8s.io/v1"
   # (We search both for maximum compatibility.)
-  INGRESS_API_VERSIONS = ["extensions/v1beta1", "networking.k8s.io/v1"].freeze
+  INGRESS_API_VERSIONS = ["networking.k8s.io/v1"].freeze
 
   def initialize
     @k8s = K8s::Client.in_cluster_config
